@@ -45,3 +45,47 @@ function counter() {
   console.log(calculate(5, 3, add)); 
   console.log(calculate(10, 4, subtract)); 
   console.log(calculate(7, 2, multiply)); 
+
+
+
+
+  // Task management system
+const taskManagementSystem = [];
+
+
+function addTask(taskName) {
+  const taskId = taskManagementSystem.length + 1;
+  const task = {
+    id: taskId,
+    name: taskName,
+    completed: false
+  };
+  taskManagementSystem.push(task);
+}
+
+
+const completeTask = function(taskId) {
+  const task = taskManagementSystem.find(task => task.id === taskId);
+  if (task) {
+    task.completed = true;
+  }
+}
+
+
+const getTasks = () => taskManagementSystem;
+
+
+addTask("Buy groceries");
+addTask("Clean the house");
+addTask("Finish the report");
+
+
+completeTask(1);
+
+
+console.log("Tasks:");
+const tasks = getTasks();
+tasks.forEach(task => {
+  const status = task.completed ? "(Completed)" : "";
+  console.log(`● Task ${task.id}: ${task.name} ${status}`);
+});
